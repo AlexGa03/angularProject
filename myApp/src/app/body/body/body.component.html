@@ -2,16 +2,65 @@
   <!-- Highlight Card -->
   <h1>Tabla de Personas</h1>
   <table>
-    
     <tr>
       <th>Id</th>
       <th>Nombre</th>
       <th>Apellido</th>
     </tr>
     <tr>
-      <td>{{personaAlex.id}}</td>
-      <td>{{personaAlex.name}}</td>
-      <td>{{personaAlex.surname}}</td>
+      <td>{{ personaAlex.id }}</td>
+      <td>{{ personaAlex.name }}</td>
+      <td>{{ personaAlex.surname }}</td>
     </tr>
   </table>
+  <br />
+  <table>
+    <tr>
+      <th>Deportistas</th>
+    </tr>
+    <tr>
+      <td>
+        <div
+          *ngFor="
+            let unDeportista of deportistas;
+            index as i;
+            first as f;
+            last as l;
+            odd as o;
+            even as e
+          "
+        >
+          <div [ngSwitch]="o">
+            <span *ngSwitchCase="true">
+              <strong class="text-success">
+                {{ unDeportista }}: su índice : {{ i }}, es el primero de la
+                lista : {{ f }}, es el último:{{ l }},es un número impar:{{
+                  o
+                }}, es un número par : {{ e }}</strong
+              ></span
+            >
+            <span *ngSwitchDefault
+              ><strong class="text-danger"
+                >{{ unDeportista }}: su índice : {{ i }}, es el primero de la
+                lista : {{ f }}, es el último:{{ l }},es un número impar:{{
+                  o
+                }}, es un número par : {{ e }}</strong
+              ></span
+            >
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <div class="d-flex flex-row justify-content-between col-12">
+    <button class="btn btn-primary"(click)="changeClass()">Cambia el color con angular --></button>
+    <h1 *ngIf="clickN%2==0;then temp1 else temp2"></h1>
+    <ng-template #temp1>
+      <h1 [class]="redClass">Cambio de color a veces</h1>
+    </ng-template>
+    <ng-template #temp2>
+      <h1 [class]="greenClass">Cambio de color a veces</h1>
+    </ng-template>
+  </div>
 </div>
