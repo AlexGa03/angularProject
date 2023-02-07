@@ -55,12 +55,25 @@
   <br>
   <div class="d-flex flex-row justify-content-between col-12">
     <button class="btn btn-primary"(click)="changeClass()">Cambia el color con angular --></button>
-    <h1 *ngIf="clickN%2==0;then temp1 else temp2"></h1>
+    <h4 *ngIf="clickN%2==0;then temp1 else temp2"></h4>
     <ng-template #temp1>
-      <h1 [class]="redClass">Cambio de color a veces</h1>
+      <h4 [class]="redClass">Cambio de color a veces</h4>
     </ng-template>
     <ng-template #temp2>
-      <h1 [class]="greenClass">Cambio de color a veces</h1>
+      <h4 [class]="greenClass">Cambio de color a veces</h4>
     </ng-template>
   </div>
+  <br>
+  <div class="d-flex flex-row justify-content-between col-12">
+    <button class="btn btn-primary"(click)="changeClass2()">Cambia el color con angular --></button>
+      <h4 [class]="colorClass">Cambio de color a veces</h4>
+  </div>
+  <br>
+  <div class="d-flex flex-row justify-content-between col-12">
+    <button class="btn btn-primary"(click)="changeBoolClass()">Cambia el booleano con angular --></button>
+    <h4 [class.text-info]="bool1">Boolean is changing here</h4>   
+  </div>
+  <br>
+  <div [ngClass]="objectsInSameClass"><h1>Inserting my class with ngClass</h1></div>
+  <div [ngStyle]="stylesInTag"><h1>Inserting my style with ngStyle</h1></div>
 </div>
