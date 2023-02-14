@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+  PersonalInfo = {
+    name: "Alex",
+    mail: "alexgaralv@campus.monlau.com",
+    tel: "617189814",
+    gitHub: "https://github.com/AlexGa03"
+  }
 
 }
