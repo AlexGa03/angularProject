@@ -14,3 +14,13 @@ ul{
   box-shadow: 2px 2px 2px rgba(142, 62, 218, 0.767);
   
 }
+
+li, a{
+  list-style: none;
+
+}
+a, a:hover, a:visited{
+  color: white;
+  font-style: normal;
+  text-decoration: none;
+}
