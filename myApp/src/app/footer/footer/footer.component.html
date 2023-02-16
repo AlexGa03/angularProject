@@ -4,14 +4,12 @@
 <footer class="d-flex align-items-center justify-content-between w-100 p-3">
   <div class="d-flex justify-content-center flex-column col-3">
     <h5 class="ml-5">Know Us:</h5>
-    <div class="d-flex">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          
-          {{ PersonalInfo.tel }}
-        </li>
-        <li class="list-group-item">{{ PersonalInfo.mail }}</li>
-        <li class="list-group-item">{{ PersonalInfo.gitHub }}</li>
+    <div class="d-flex bg-transparent">
+      <ul class="list-group list-group-horizontal-sm bg-transparent">
+        <li class="list-group-item list-group-item-dark"> {{ PersonalInfo.tel }}</li>
+        <li class="list-group-item list-group-item-dark">{{ PersonalInfo.mail }}</li>
+        <li class="list-group-item list-group-item-dark">{{ PersonalInfo.gitHub }}</li>
+        <li></li>
       </ul>
       
     </div>

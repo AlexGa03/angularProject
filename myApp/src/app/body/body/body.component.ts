@@ -8,7 +8,12 @@ import { Component } from '@angular/core';
 export class BodyComponent {
   title = 'Alexgaralv';
   personaAlex = p1;
-  deportistas: String[] = ["Nadal","Messi","Federer","Pique","Cristiano"];
+  rutinas: String[][] = [
+    ["1 Día","Pecho/abs","Biceps/Triceps","Cuádriceps/femoral","Espalda","Hombro/gemelos/abs","Músculo de preferencia","Descanso"],
+    ["1 Día","Cuádriceps/gemelos","Biceps/Triceps","Espalda/Abs","Glúteo/femoral","Hombro/Abs","Pecho/Glúteo","Descanso"],
+    ["2 Dias","Pecho/abs","Biceps/Triceps","Cuádriceps/femoral","Descanso","Hombro/gemelos/abs","Espalda","Descanso"],
+    ["2 Dias","Cuádriceps/gemelos","Biceps/Triceps","Espalda/Triceps/Abs","Descanso","Hombro/Abs","Glúteo/femoral","Descanso"]
+  ];
   redClass = "text-danger";
   greenClass = "text-success";
   colorClass:string = "text-danger";

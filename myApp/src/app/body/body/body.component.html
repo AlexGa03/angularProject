@@ -1,28 +1,62 @@
-<div class="content" role="main">
+<div class="content p-0 m-0" role="main">
   <!-- Highlight Card -->
-  <h1>Tabla de Personas</h1>
-  <table>
+  <h1>Distribución de músculos</h1>
+
+  <br />
+  <table class="table t bg-light p-2">
     <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
+      <th scope="col">Descansos</th>
+      <th scope="col">Lunes</th>
+      <th scope="col">Martes</th>
+      <th scope="col">Miércoles</th>
+      <th scope="col">Jueves</th>
+      <th scope="col">Viernes</th>
+      <th scope="col">Sábado</th>
+      <th scope="col">Domingo</th>
     </tr>
-    <tr>
-      <td>{{ personaAlex.id }}</td>
-      <td>{{ personaAlex.name }}</td>
-      <td>{{ personaAlex.surname }}</td>
+    <tr
+      *ngFor="
+        let rutina of rutinas;
+        index as j;
+        first as f;
+        last as l;
+        odd as od;
+        even as e
+      "
+      [ngSwitch]="od"
+    >
+      <td
+        *ngFor="
+          let musculo of rutinas[j];
+          index as i;
+          first as f;
+          last as l;
+          odd as o;
+          even as e
+        "
+      >
+        
+          <span *ngSwitchCase="true">
+            <strong class="text-dark"> {{ musculo }}</strong>
+          </span>
+          <span *ngSwitchDefault>
+            <strong class="text-success"> {{ musculo }}</strong>
+          </span>
+      </td>
     </tr>
   </table>
   <br />
-  <table>
+  <table class="table">
     <tr>
-      <th>Deportistas</th>
+      <th scope="col">#</th>
+      <th scope="col">Deportistas</th>
     </tr>
     <tr>
+      <th scope="row">1</th>
       <td>
         <div
           *ngFor="
-            let unDeportista of deportistas;
+            let rutina of rutinas;
             index as i;
             first as f;
             last as l;
@@ -33,18 +67,16 @@
           <div [ngSwitch]="o">
             <span *ngSwitchCase="true">
               <strong class="text-success">
-                {{ unDeportista }}: su índice : {{ i }}, es el primero de la
-                lista : {{ f }}, es el último:{{ l }},es un número impar:{{
-                  o
-                }}, es un número par : {{ e }}</strong
+                {{ rutina }}: su índice : {{ i }}, es el primero de la lista :
+                {{ f }}, es el último:{{ l }},es un número impar:{{ o }}, es un
+                número par : {{ e }}</strong
               ></span
             >
             <span *ngSwitchDefault
               ><strong class="text-danger"
-                >{{ unDeportista }}: su índice : {{ i }}, es el primero de la
-                lista : {{ f }}, es el último:{{ l }},es un número impar:{{
-                  o
-                }}, es un número par : {{ e }}</strong
+                >{{ rutina }}: su índice : {{ i }}, es el primero de la lista :
+                {{ f }}, es el último:{{ l }},es un número impar:{{ o }}, es un
+                número par : {{ e }}</strong
               ></span
             >
           </div>
@@ -52,10 +84,12 @@
       </td>
     </tr>
   </table>
-  <br>
+  <!--  -->
   <div class="d-flex flex-row justify-content-between col-12">
-    <button class="btn btn-primary"(click)="changeClass()">Cambia el color con angular --></button>
-    <h4 *ngIf="clickN%2==0;then temp1 else temp2"></h4>
+    <button class="btn btn-primary" (click)="changeClass()">
+      Cambia el color con angular -->
+    </button>
+    <h4 *ngIf="clickN % 2 == 0; then temp1; else temp2"></h4>
     <ng-template #temp1>
       <h4 [class]="redClass">Cambio de color a veces</h4>
     </ng-template>
@@ -63,25 +97,52 @@
       <h4 [class]="greenClass">Cambio de color a veces</h4>
     </ng-template>
   </div>
-  <br>
+  <br />
   <div class="d-flex flex-row justify-content-between col-12">
-    <button class="btn btn-primary"(click)="changeClass2()">Cambia el color con angular --></button>
-      <h4 [class]="colorClass">Cambio de color a veces</h4>
+    <button class="btn btn-primary" (click)="changeClass2()">
+      Cambia el color con angular -->
+    </button>
+    <h4 [class]="colorClass">Cambio de color a veces</h4>
   </div>
-  <br>
+  <br />
   <div class="d-flex flex-row justify-content-between col-12">
-    <button class="btn btn-primary"(click)="changeBoolClass()">Cambia el booleano con angular --></button>
-    <h4 [class.text-info]="bool1">Boolean is changing here</h4>   
+    <button class="btn btn-primary" (click)="changeBoolClass()">
+      Cambia el booleano con angular -->
+    </button>
+    <h4 [class.text-info]="bool1">Boolean is changing here</h4>
   </div>
-  <br>
-  <div [ngClass]="objectsInSameClass"><h1>Inserting my class with ngClass</h1></div>
+  <br />
+  <div [ngClass]="objectsInSameClass">
+    <h1>Inserting my class with ngClass</h1>
+  </div>
   <div [ngStyle]="stylesInTag"><h1>Inserting my style with ngStyle</h1></div>
-</div>
-<div id="Contact" class=" w-100 p-3">
-  
-  <div class="d-flex flex-column mx-5">
-    <label for="msg"><h3>Hi! You can contact me right here:</h3></label>
-    <textarea name="msg" id="msg" cols="20" rows="5" placeholder="Write a message..."></textarea>
+  <hr />
+  <div id="Contact" class="w-100 p-3 m-0 d-flex justify-content-center">
+    <div class="d-flex flex-column mx-5 col-10">
+      <h1>CONTACT</h1>
+      <br />
+      <label for="msg"><h3>Hi! You can contact me right here:</h3></label>
+      <br />
+      <input
+        class="col-3"
+        type="email"
+        name="mail"
+        id="mail"
+        required
+        placeholder="Write your email"
+      />
+      <br />
+      <textarea
+        name="msg"
+        id="msg"
+        cols="20"
+        rows="5"
+        placeholder="Write a message..."
+      ></textarea>
+      <div class="col-12 d-flex justify-content-end">
+        <button class="btn btn-light col-3 mt-2">Send</button>
+      </div>
+    </div>
+    <br />
   </div>
-  <br>
 </div>
