@@ -1,62 +1,68 @@
-<div class="content p-0 m-0" role="main">
-  <!-- Highlight Card -->
-  <h1>Distribución de músculos</h1>
+<div class="content p-0 m-0 container-fluid" role="main">
+  <div class="col-12 d-flex justify-content-center">
+    <div id="carrCss" class="">
+      <img src="../../../assets/images/img1.jpg" alt="" />
+      <img src="../../../assets/images/img2.webp" alt="" />
+      <img src="../../../assets/images/img3.jfif" alt="" />
+      <img src="../../../assets/images/img4.webp" alt="" />
+    </div>
+  </div>
 
-  <br />
-  <table class="table t bg-light p-2">
-    <tr>
-      <th scope="col">Descansos</th>
-      <th scope="col">Lunes</th>
-      <th scope="col">Martes</th>
-      <th scope="col">Miércoles</th>
-      <th scope="col">Jueves</th>
-      <th scope="col">Viernes</th>
-      <th scope="col">Sábado</th>
-      <th scope="col">Domingo</th>
-    </tr>
-    <tr
-      *ngFor="
-        let rutina of rutinas;
-        index as j;
-        first as f;
-        last as l;
-        odd as od;
-        even as e
-      "
-      [ngSwitch]="od"
-    >
-      <td
+  <!-- <div class="col-2 d-flex justify-content-between">
+    <label for="days"><h4>Días de descanso</h4></label>
+    <select name="days" id="days" (click)="input()">
+      <option value="1" (click)="input()">1</option>
+      <option value="2" (click)="input()">2</option>
+    </select>
+  </div>
+  <h1>{{ opt }}</h1> -->
+  <div class="wrapper">
+    <div id="form" class="d-flex justify-content-between">
+      <button [ngClass]="butt" (click)="changeButton()">
+        <div class="sp bM" [ngStyle]="styleRutinaM">
+          <img class="buttG" src="../../../assets/images/man3d.png" alt="" />
+        </div>
+        <div class="sp bW" [ngStyle]="styleRutinaW">
+          <img class="buttG" src="../../../assets/images/woman.png" alt="" />
+        </div>
+      </button>
+
+      <br />
+      <a href="#form" (click)="showTable()" [class]="btnClass"
+        ><span>Cargar rutina</span></a
+      >
+    </div>
+    <br />
+    <table id="tbl" [class]="tableClass">
+      <caption class="tit">
+        Distribución de músculos
+      </caption>
+      <tr class="headers">
+        <th scope="col">Descansos</th>
+        <th scope="col">Lunes</th>
+        <th scope="col">Martes</th>
+        <th scope="col">Miércoles</th>
+        <th scope="col">Jueves</th>
+        <th scope="col">Viernes</th>
+        <th scope="col">Sábado</th>
+        <th scope="col">Domingo</th>
+      </tr>
+      <tr
         *ngFor="
-          let musculo of rutinas[j];
-          index as i;
+          let rutina of rutinas;
+          index as j;
           first as f;
           last as l;
-          odd as o;
+          odd as od;
           even as e
         "
+        [ngSwitch]="od"
       >
-        
-          <span *ngSwitchCase="true">
-            <strong class="text-dark"> {{ musculo }}</strong>
-          </span>
-          <span *ngSwitchDefault>
-            <strong class="text-success"> {{ musculo }}</strong>
-          </span>
-      </td>
-    </tr>
-  </table>
-  <br />
-  <table class="table">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Deportistas</th>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <div
+        <td
           *ngFor="
-            let rutina of rutinas;
+            D;
+            let musculo;
+            of: rutinas[j];
             index as i;
             first as f;
             last as l;
@@ -64,84 +70,53 @@
             even as e
           "
         >
-          <div [ngSwitch]="o">
-            <span *ngSwitchCase="true">
-              <strong class="text-success">
-                {{ rutina }}: su índice : {{ i }}, es el primero de la lista :
-                {{ f }}, es el último:{{ l }},es un número impar:{{ o }}, es un
-                número par : {{ e }}</strong
-              ></span
-            >
-            <span *ngSwitchDefault
-              ><strong class="text-danger"
-                >{{ rutina }}: su índice : {{ i }}, es el primero de la lista :
-                {{ f }}, es el último:{{ l }},es un número impar:{{ o }}, es un
-                número par : {{ e }}</strong
-              ></span
-            >
-          </div>
-        </div>
-      </td>
-    </tr>
-  </table>
-  <!--  -->
-  <div class="d-flex flex-row justify-content-between col-12">
-    <button class="btn btn-primary" (click)="changeClass()">
-      Cambia el color con angular -->
-    </button>
-    <h4 *ngIf="clickN % 2 == 0; then temp1; else temp2"></h4>
-    <ng-template #temp1>
-      <h4 [class]="redClass">Cambio de color a veces</h4>
-    </ng-template>
-    <ng-template #temp2>
-      <h4 [class]="greenClass">Cambio de color a veces</h4>
-    </ng-template>
+          <span *ngSwitchCase="true">
+            <strong [class]="womanClass"> {{ musculo }}</strong>
+          </span>
+          <span *ngSwitchDefault>
+            <strong [class]="manClass"> {{ musculo }}</strong>
+          </span>
+        </td>
+      </tr>
+    </table>
   </div>
+
   <br />
-  <div class="d-flex flex-row justify-content-between col-12">
-    <button class="btn btn-primary" (click)="changeClass2()">
-      Cambia el color con angular -->
-    </button>
-    <h4 [class]="colorClass">Cambio de color a veces</h4>
-  </div>
-  <br />
-  <div class="d-flex flex-row justify-content-between col-12">
-    <button class="btn btn-primary" (click)="changeBoolClass()">
-      Cambia el booleano con angular -->
-    </button>
-    <h4 [class.text-info]="bool1">Boolean is changing here</h4>
-  </div>
-  <br />
-  <div [ngClass]="objectsInSameClass">
-    <h1>Inserting my class with ngClass</h1>
-  </div>
-  <div [ngStyle]="stylesInTag"><h1>Inserting my style with ngStyle</h1></div>
   <hr />
   <div id="Contact" class="w-100 p-3 m-0 d-flex justify-content-center">
-    <div class="d-flex flex-column mx-5 col-10">
+    <div >
       <h1>CONTACT</h1>
       <br />
-      <label for="msg"><h3>Hi! You can contact me right here:</h3></label>
-      <br />
-      <input
-        class="col-3"
-        type="email"
-        name="mail"
-        id="mail"
-        required
-        placeholder="Write your email"
-      />
-      <br />
-      <textarea
-        name="msg"
-        id="msg"
-        cols="20"
-        rows="5"
-        placeholder="Write a message..."
-      ></textarea>
-      <div class="col-12 d-flex justify-content-end">
-        <button class="btn btn-light col-3 mt-2">Send</button>
-      </div>
+      <form action="" id="cont" class="d-flex flex-column mx-5 col-10">
+        <label for="msg"><h3>Hi! You can contact me right here:</h3></label>
+        <br />
+        <input
+          class="col-3 cont"
+          type="email"
+          name="mail"
+          id="mail"
+          required
+          placeholder="Write your email"
+        />
+        <br />
+        <textarea
+          name="msg"
+          id="msg"
+          cols="20"
+          rows="5"
+          placeholder="Write a message..."
+          class="cont"
+        ></textarea>
+        <div class="col-12 d-flex justify-content-end">
+          <button
+            type="submit"
+            class="btn fourth btn-light col-3 mt-2"
+            (click)="clear()"
+          >
+            Send
+          </button>
+        </div>
+      </form>
     </div>
     <br />
   </div>

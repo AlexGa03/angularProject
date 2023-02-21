@@ -1,8 +1,181 @@
-.content, #Contact{
+.content,
+#Contact {
   background-color: black;
   color: aliceblue;
 }
-.t, td, th, tr{
+.t,
+td,
+th,
+tr {
   border: 1px black solid;
   text-align: center;
+}
+.headers th {
+  background-color: royalblue;
+}
+td:has(.woman) {
+  background-color: blueviolet;
+}
+td:has(.man) {
+  background-color: blue;
+}
+td:has(.false){
+  display: none;
+}
+
+
+
+.buttG {
+  width: 3em;
+}
+.sp{
+  display: flex;
+  background-color: transparent;
+  border-radius: 4em;
+  height: 100%;
+  margin: 0%;
+
+}
+.genre-M .bW,
+.genre-W .bM{
+  display: flex;
+  background-color: transparent;
+  animation-name: bye;
+  animation-duration: 1000ms;
+}
+.genre-M .bM,
+.genre-W .bW{
+  display: flex;
+  background-color: black;
+  border: white solid 2px;
+
+}
+@keyframes bye{
+  0%{
+    opacity: 1;
+    transform: rotateX(90deg);
+  }
+  50%{
+    opacity: 0.5;
+    transform: rotateX(0deg);
+  }
+  100%{
+    visibility: hidden;
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+}
+
+
+.genre {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3em;
+  width: fit-content;
+}
+
+
+
+
+
+.fourth {
+  background: red;
+  border-color: red;
+  color: #fff;
+  background-image: linear-gradient(45deg, red 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+
+
+}
+.fourth:hover {
+  background-position: 0;
+}
+.on{
+  display: flex;
+}
+.out{
+  display: none;
+}
+.tit {
+  background-color: black;
+  color: aliceblue;
+}
+
+
+
+
+
+
+#carrCss{
+  display: flex;
+  height: 430px;
+  width: 600px;
+}
+
+
+#carrCss img{
+ width: 0;
+ flex-grow: 1;
+ object-fit: cover;
+ opacity: .8;
+ transition: .5s ease;
+}
+#carrCss img:hover{
+  width: 300;
+  opacity: 1;
+  filter: contrast(120%);
+ }
+
+ .wrapper{
+  display: grid;
+  place-items: center;
+  border: aliceblue solid 2px;
+  border-radius: 3em;
+  margin: 10%;
+  padding: 2%;
+}
+
+.a{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+.a span{
+  position: relative;
+  z-index: 2;
+}
+
+.a:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ff003b;
+  transition: all .35s;
+}
+
+.a:hover{
+  color: #fff;
+}
+
+.a:hover:after{
+  width: 100%;
 }

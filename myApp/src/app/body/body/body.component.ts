@@ -3,56 +3,115 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']
+  styleUrls: ['./body.component.css'],
 })
 export class BodyComponent {
   title = 'Alexgaralv';
-  personaAlex = p1;
-  rutinas: String[][] = [
-    ["1 Día","Pecho/abs","Biceps/Triceps","Cuádriceps/femoral","Espalda","Hombro/gemelos/abs","Músculo de preferencia","Descanso"],
-    ["1 Día","Cuádriceps/gemelos","Biceps/Triceps","Espalda/Abs","Glúteo/femoral","Hombro/Abs","Pecho/Glúteo","Descanso"],
-    ["2 Dias","Pecho/abs","Biceps/Triceps","Cuádriceps/femoral","Descanso","Hombro/gemelos/abs","Espalda","Descanso"],
-    ["2 Dias","Cuádriceps/gemelos","Biceps/Triceps","Espalda/Triceps/Abs","Descanso","Hombro/Abs","Glúteo/femoral","Descanso"]
+  rutinas: string[][] = [
+    [
+      '1',
+      'Pecho/abs',
+      'Biceps/Triceps',
+      'Cuádriceps/femoral',
+      'Espalda',
+      'Hombro/gemelos/abs',
+      'Músculo de preferencia',
+      'Descanso',
+    ],
+    [
+      '1',
+      'Cuádriceps/gemelos',
+      'Biceps/Triceps',
+      'Espalda/Abs',
+      'Glúteo/femoral',
+      'Hombro/Abs',
+      'Pecho/Glúteo',
+      'Descanso',
+    ],
+    [
+      '2',
+      'Pecho/abs',
+      'Biceps/Triceps',
+      'Cuádriceps/femoral',
+      'Descanso',
+      'Hombro/gemelos/abs',
+      'Espalda',
+      'Descanso',
+    ],
+    [
+      '2',
+      'Cuádriceps/gemelos',
+      'Biceps/Triceps',
+      'Espalda/Triceps/Abs',
+      'Descanso',
+      'Hombro/Abs',
+      'Glúteo/femoral',
+      'Descanso',
+    ],
   ];
-  redClass = "text-danger";
-  greenClass = "text-success";
-  colorClass:string = "text-danger";
-  changeClass2(){
-    if(this.colorClass == "text-danger"){
-      this.colorClass = "text-success";
-    }else{
-      this.colorClass = "text-danger";
+  butt = 'genre p-0 genre-M';
+  man = true;
+  womanClass = 'text-light woman false';
+  manClass = 'text-light man';
+  changeButton() {
+    this.man = !this.man;
+    if (this.butt == 'genre p-0 genre-M') {
+      this.butt = 'genre p-0 genre-W';
+    } else {
+      this.butt = 'genre p-0 genre-M';
     }
-  }
-  bool1 = false;
-  changeBoolClass(){
-    this.bool1 = !this.bool1;
-  }
-  clickN:number = 0;
-  changeClass(){
-    this.clickN = this.clickN+1;
-  }
+    if (this.man == true) {
+      this.womanClass = 'text-light woman false';
+      this.manClass = 'text-light man';
+      setTimeout(() => {
+        this.styleRutinaW = {
+          display: 'none',
+        };
+        this.styleRutinaM = {
+          display: 'block',
+        };
+      }, 1000);
+    } else {
+      this.womanClass = 'text-light woman';
+      this.manClass = 'text-light man false';
+      setTimeout(() => {
+        this.styleRutinaM = {
+          display: 'none',
+        };
+        this.styleRutinaW = {
+          display: 'block',
+        };
+      }, 1000);
 
-  objectsInSameClass={
-    'badge': true,
-    'badge-pill':true,
-    'badge-primary':true,
-    'text-danger':true,
+    }
+    console.log(this.man);
+  }
+  clase1 = 'true';
+  clase2 = 'false';
+  tableClass = 'table t bg-light m-2 p-2 d-none';
+  showTable() {
+    // this.input();
+    this.btnClass = "d-none";
+    this.tableClass = 'table t bg-light m-2 p-2';
+  }
+  styleRutinaW = {
+    display: 'none',
   };
-  stylesInTag={
-    'color':"blue",
-    'Font-weight':"bold"
+  styleRutinaM = {
+    display: 'block',
   };
-}
-interface persona{
-  id:number,
-  name:string,
-  surname:string
+  btnClass = "mx-3 a"
+  clear(){
+   document.getElementById("cont")?.onreset;
+  }
+  // opt:any ="1";
+  // input(){
+  //   let e = (document.getElementById("days")) as HTMLSelectElement;
+  //   let sel = e.selectedIndex;
+  //   this.opt = e.options[sel].value;
 
-}
-
-const p1:persona = {
-  id : 1,
-  name : "Alex",
-  surname :"Garcia"
+  // }
+  // applyClass(rutina: string[][]): boolean {
+  //   return rutina[0][0] !== this.opt;
+  // }
 }
